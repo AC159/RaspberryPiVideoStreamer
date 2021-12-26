@@ -1,6 +1,11 @@
 # C++ Raspberry Pi Video Streamer
 
-## Installation on client side (must be a linux machine)
+## Overview
+
+The goal is to livestream a video from a camera connected to the Raspberry Pi 
+and send the live feed to the client through TCP sockets with OpenCV.
+
+### Installation on client side (must be a linux machine)
 
     cd client && mkdir build && cd build
     cmake ..
@@ -10,7 +15,7 @@
 In order to run the client the raspberry pi server must already be running 
     and listening on a port
 
-## Installation on Raspberry Pi 4
+### Installation on Raspberry Pi 4
 
     cd RaspberryPiServer && mkdir build && cd build
     cmake ..
