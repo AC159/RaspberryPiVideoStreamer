@@ -63,17 +63,9 @@ int main() {
     // --- GRAB AND WRITE LOOP
     uint8_t serverReadyMsg[] = "raspberryPi~#";
     uint8_t startVideoCapture[] = "Starting video capture...\n";
-    uint8_t instruction1[] = "Press 1 to switch resolution to 176x144\n";
-    uint8_t instruction2[] = "Press 2 to switch to original resolution\n";
     uint8_t instruction3[] = "Press q key to terminate\n";
 
     sent = send(client, startVideoCapture, sizeof(startVideoCapture), 0);
-    cout << "sent: " << (int) sent << endl;
-    
-    sent = send(client, instruction1, sizeof(instruction1), 0);
-    cout << "sent: " << (int) sent << endl;
-
-    sent = send(client, instruction2, sizeof(instruction2), 0);
     cout << "sent: " << (int) sent << endl;
 
     cout << "Starting video capture..." << endl;
@@ -92,29 +84,6 @@ int main() {
             cout << "Did not receive OK status from client...ABORTING" << endl;
             break;
         }
-        
-        // check if we succeeded
-        // if (frame.empty()) {
-        //     cerr << "ERROR! blank frame grabbed\n";
-        //     break;
-        // }
-
-        // if (waitKey(30) == 49 && setCameraResolution != 1) {
-        //     vc.set(CAP_PROP_FRAME_WIDTH, 176);
-        //     vc.set(CAP_PROP_FRAME_HEIGHT, 144);
-        //     setCameraResolution = 1;
-        // }
-
-        // if (waitKey(30) == 50 && setCameraResolution != 2) {
-        //     vc.set(CAP_PROP_FRAME_WIDTH, originalWidth);
-        //     vc.set(CAP_PROP_FRAME_HEIGHT, originalHeight);
-        //     setCameraResolution = 2;
-        // }
-
-        // show live and wait for a key with timeout long enough to show images
-        // if (!frame.empty()) {
-        //     imshow("Live", frame);
-        // }
 
         if (waitKey(60) == 113)
             break;
